@@ -3,7 +3,7 @@
 
 ### Project Specifications
 
-See [Project Specification] at EPFL [@/epfml/ML_course] github page.
+See [Project Specification] at EPFL [/epfml/ML_course] github page.
 
 
 Please add the text files : train_neg_full.txt train_pos_full.txt test_data.txt in the datasets folder
@@ -54,7 +54,7 @@ Download glove.twitter.27B.zip from https://nlp.stanford.edu/projects/glove/?fbc
 Download the train and test data from https://www.crowdai.org/challenges/epfl-ml-text-classification/dataset_files and extract them in 'train_test_data' folder
 run the script run.py
 
-**Preprocess**
+### Preprocess
 Several preprocessing techniques were used, majority of them were helpful and improved the score, but some were not.
 Some of the most influental techniques used were:
 -Emphisizing with external dictionnaries
@@ -64,8 +64,7 @@ Some of the most influental techniques used were:
 -Deal with apostrophes/ hashtags..etc
 
 
-Train & Predictions:
-
+### Train & Predictions:
 We used as word embeddings both the Glove Stanford pretrained ones(gave us better results because of the huge dataset they learned from) 
 and our own created ones. We then did the fit and predictions using supervised techniques (logistic regression, SVM..) 
 and in a second time deep learning techniques (CNN, RNN, BERT..) which gave far better results.
