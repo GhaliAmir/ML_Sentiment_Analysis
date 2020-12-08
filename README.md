@@ -1,56 +1,65 @@
-# Project Text Sentiment Classification
-
-The task of this competition is to predict if a tweet message used to contain a positive :) or negative :( smiley, by considering only the remaining text.
-
-As a baseline, we here provide sample code using word embeddings to build a text classifier system.
-
-Submission system environment setup:
-
-1. The dataset is available from the Kaggle page, as linked in the PDF project description
-
- Download the provided datasets `twitter-datasets.zip`.
-
-2. To submit your solution to the online evaluation system, we require you to prepare a “.csv” file of the same structure as sampleSubmission.csv (the order of the predictions does not matter, but make sure the tweet ids and predictions match). Your submission is evaluated according to the classification error (number of misclassified tweets) of your predictions.
-
-*Working with Twitter data:* We provide a large set of training tweets, one tweet per line. All tweets in the file train pos.txt (and the train pos full.txt counterpart) used to have positive smileys, those of train neg.txt used to have a negative smiley. Additionally, the file test data.txt contains 10’000 tweets without any labels, each line numbered by the tweet-id.
-
-Your task is to predict the labels of these tweets, and upload the predictions to kaggle. Your submission file for the 10’000 tweets must be of the form `<tweet-id>`, `<prediction>`, see `sampleSubmission.csv`.
-
-Note that all tweets have already been pre-processed so that all words (tokens) are separated by a single whitespace. Also, the smileys (labels) have been removed.
-
-## Classification using Word-Vectors
-
-For building a good text classifier, it is crucial to find a good feature representation of the input text. Here we will start by using the word vectors (word embeddings) of each word in the given tweet. For simplicity of a first baseline, we will construct the feature representation of the entire text by simply averaging the word vectors.
-
-Below is a solution pipeline with an evaluation step:
-
-### Generating Word Embeddings: 
-
-Load the training tweets given in `pos_train.txt`, `neg_train.txt` (or a suitable subset depending on RAM requirements), and construct a a vocabulary list of words appearing at least 5 times. This is done running the following commands. Note that the provided `cooc.py` script can take a few minutes to run, and displays the number of tweets processed.
-
-```bash
-build_vocab.sh
-cut_vocab.sh
-python3 pickle_vocab.py
-python3 cooc.py
-```
+Please add the text files : train_neg_full.txt train_pos_full.txt test_data.txt in the datasets folder
 
 
-Now given the co-occurrence matrix and the vocabulary, it is not hard to train GloVe word embeddings, that is to compute an embedding vector for wach word in the vocabulary. We suggest to implement SGD updates to train the matrix factorization, as in
+Description
+This is a Twitter Sentiment Analysis project, done in the scope of EPFL's Masters Machine Learning course.
+Given is a dataset of 2.5 Million tweets, and a test data for predictions with 10,000 test tweets.
+This competition was hosted in www.aicrowd.com
 
-```glove_solution.py```
+To run the project you need the libraries :
+numpy
+keras
+tensorflow
+sklearn
+matplotlib
+pickle
+wordninja
+re
+ktrain ( for bert model ) 
+math
 
-Once you tested your system on the small set of 10% of all tweets, we suggest you run on the full datasets `pos_train_full.txt`, `neg_train_full.txt`
+Folders
+BertModel: This folder contains our already trained bert model .
+cleaned_datasets : This folder contains the pickle files of the cleaned training and test datasets
+datasets : This folder contains the text files containing the tweets
+Deep_Learning_Models : This folder contains our best deep learning model 
+dictionnaries : This folder contains dictionnaries for slang translation and spelling correction downloaded from internet 
+** http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz (dict1)
+** http://luululu.com/tweet/typo-corpus-r1.txt (dict2)
+embeddings : This folder contains 2 sub-folders :
+->my_embedding 
+->pretrained_embeddings : contains the pickle file of the glove embeddings downloaded from Stanford with 200 dimension only 
+pos_neg_words : This folder contains two text files for positive-words and negative words ( downloeaded from the internet )
+submission :  contains our submitted csv , the best ones are outside this folder 
 
-### Building a Text Classifier:
+Code and notebooks
+helper.py: This script contains methods to read , process the data , create dictionnaries and create the submissions csv
+paths.py: It contains only the paths used in our code used almost everywhere 
+create_emebedding.py: It creates a word embedding using either stanford pretrained files ( specify the dimension ) or by constructing our own glove using the glove solution file
+tweet_vectors.py : It created the embedding of the tweets and their sequences for deeplearning 
+run.py : Script to create the csv for our best model by calling run_dl_model()
 
-1. Construct Features for the Training Texts: Load the training tweets and the built GloVe word embeddings. Using the word embeddings, construct a feature representation of each training tweet (by averaging the word vectors over all words of the tweet).
 
-2. Train a Linear Classifier: Train a linear classifier (e.g. logistic regression or SVM) on your constructed features, using the scikit learn library, or your own code from the earlier labs. Recall that the labels indicate if a tweet used to contain a :) or :( smiley.
+Download glove.twitter.27B.zip from https://nlp.stanford.edu/projects/glove/?fbclid=IwAR1yRzuBFvrUYngB61tEOLXlYoqTaBjbnzJmxz4TQcSIfh4YFYZaXPIyYfA and extract it in 'pretrained_embeddings' folder under the 'embeddings' folder
+Download the train and test data from https://www.crowdai.org/challenges/epfl-ml-text-classification/dataset_files and extract them in 'train_test_data' folder
+run the script run.py
 
-3. Prediction: Predict labels for all tweets in the test set.
+Preprocess:
 
-4. Submission / Evaluation: Submit your predictions to kaggle, and verify the obtained misclassification error score. (You can also use a local separate validation set to get faster feedback on the accuracy of your system). Try to tune your system for best evaluation score.
+Several preprocessing techniques were used, majority of them were helpful and improved the score, but some were not.
+Some of the most influental techniques used were:
+-Emphisizing with external dictionnaries
+-Removing Punctuation and noisy words/characters
+-Correct spelling and map words to actual "real" ones via multiple methods and dicts..
+-Lemmatizing/Stemming
+-Deal with apostrophes/ hashtags..etc
 
-## Extensions:
-Naturally, there are many ways to improve your solution, both in terms of accuracy and computation speed. More advanced techniques can be found in the recent literature.
+
+Train & Predictions:
+
+We used as word embeddings both the Glove Stanford pretrained ones(gave us better results because of the huge dataset they learned from) 
+and our own created ones. We then did the fit and predictions using supervised techniques (logistic regression, SVM..) 
+and in a second time deep learning techniques (CNN, RNN, BERT..) which gave far better results.
+After fitting the model, we can test it locally via cross validation to see how good it works, 
+improve the different parameters depending on the seen results and finally predict the labels on the test data 
+and push our predictions to AIcrowd platform to see how good they were.
