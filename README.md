@@ -3,7 +3,7 @@
 
 ### Project Specifications
 
-See [Project Specification] at EPFL [/epfml/ML_course] github page.
+See [Project Specification](https://github.com/epfml/ML_course/tree/master/projects/project2/project_text_classification) at EPFL [/epfml/ML_course](https://github.com/epfml/ML_course) github page.
 
 
 Please add the text files : train_neg_full.txt train_pos_full.txt test_data.txt in the datasets folder
@@ -71,3 +71,9 @@ and in a second time deep learning techniques (CNN, RNN, BERT..) which gave far 
 After fitting the model, we can test it locally via cross validation to see how good it works, 
 improve the different parameters depending on the seen results and finally predict the labels on the test data 
 and push our predictions to AIcrowd platform to see how good they were.
+
+
+## Contributors:
++ Amir Ghali
++ Mahmoud Sellami
++ Victoria Adcock
