@@ -18,14 +18,23 @@ This competition was hosted in www.aicrowd.com
 ### To run the project you need the libraries:
 
 numpy
+
 keras
+
 tensorflow
+
 sklearn
+
 matplotlib
+
 pickle
+
 wordninja
+
 re
+
 ktrain ( for bert model ) 
+
 math
 
 ### Folders
