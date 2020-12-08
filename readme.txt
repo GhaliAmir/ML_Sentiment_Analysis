@@ -1,10 +1,4 @@
-REMARK : Initially we wanted to submit in the zip file the bert model , the pretrained embeddings and our best deep learning model all in all weighted 3GB
-while the allowed size is of 150MB . Also please add the text files Sorry : train_neg_full.txt train_pos_full.txt test_data.txt in the datasets folder !
-We had to do these last minute changes due to server crashing and not accepting zip file even though it's under 150MB 
-So if you want to run our project you have to wait for all the preprocessing the construction of the pretrained
-embedding and the model fit on train data 
-
-
+Please add the text files : train_neg_full.txt train_pos_full.txt test_data.txt in the datasets folder
 
 
 Description
@@ -12,8 +6,7 @@ This is a Twitter Sentiment Analysis project, done in the scope of EPFL's Master
 Given is a dataset of 2.5 Million tweets, and a test data for predictions with 10,000 test tweets.
 This competition was hosted in www.aicrowd.com
 
-To run our project you need to install these
-Necessary libraries :
+To run the project you need the libraries :
 numpy
 keras
 tensorflow
@@ -46,7 +39,6 @@ create_emebedding.py: It creates a word embedding using either stanford pretrain
 tweet_vectors.py : It created the embedding of the tweets and their sequences for deeplearning 
 run.py : Script to create the csv for our best model by calling run_dl_model()
 
-To be able to run our project you need first to install the above librairies and then:
 
 Download glove.twitter.27B.zip from https://nlp.stanford.edu/projects/glove/?fbclid=IwAR1yRzuBFvrUYngB61tEOLXlYoqTaBjbnzJmxz4TQcSIfh4YFYZaXPIyYfA and extract it in 'pretrained_embeddings' folder under the 'embeddings' folder
 Download the train and test data from https://www.crowdai.org/challenges/epfl-ml-text-classification/dataset_files and extract them in 'train_test_data' folder
@@ -66,8 +58,8 @@ Some of the most influental techniques used were:
 Train & Predictions:
 
 We used as word embeddings both the Glove Stanford pretrained ones(gave us better results because of the huge dataset they learned from) 
-and our own created ones.We then did the fit and predictions using supervised techniques (logistic regression, SVM..) 
-and in a second time unsupervised deep learning techniques (CNN, RNN, BERT..) which gave far better results.
+and our own created ones. We then did the fit and predictions using supervised techniques (logistic regression, SVM..) 
+and in a second time deep learning techniques (CNN, RNN, BERT..) which gave far better results.
 After fitting the model, we can test it locally via cross validation to see how good it works, 
 improve the different parameters depending on the seen results and finally predict the labels on the test data 
 and push our predictions to AIcrowd platform to see how good they were.
