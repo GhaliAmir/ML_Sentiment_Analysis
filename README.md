@@ -1,12 +1,22 @@
+# Twitter Sentiment Analysis
+
+
+### Project Specifications
+
+See [Project Specification] at EPFL [@/epfml/ML_course] github page.
+
+
 Please add the text files : train_neg_full.txt train_pos_full.txt test_data.txt in the datasets folder
 
 
-Description
+### Description
+
 This is a Twitter Sentiment Analysis project, done in the scope of EPFL's Masters Machine Learning course.
 Given is a dataset of 2.5 Million tweets, and a test data for predictions with 10,000 test tweets.
 This competition was hosted in www.aicrowd.com
 
-To run the project you need the libraries :
+### To run the project you need the libraries:
+
 numpy
 keras
 tensorflow
@@ -18,7 +28,7 @@ re
 ktrain ( for bert model ) 
 math
 
-Folders
+### Folders
 BertModel: This folder contains our already trained bert model .
 cleaned_datasets : This folder contains the pickle files of the cleaned training and test datasets
 datasets : This folder contains the text files containing the tweets
@@ -32,7 +42,7 @@ embeddings : This folder contains 2 sub-folders :
 pos_neg_words : This folder contains two text files for positive-words and negative words ( downloeaded from the internet )
 submission :  contains our submitted csv , the best ones are outside this folder 
 
-Code and notebooks
+### Code and notebooks
 helper.py: This script contains methods to read , process the data , create dictionnaries and create the submissions csv
 paths.py: It contains only the paths used in our code used almost everywhere 
 create_emebedding.py: It creates a word embedding using either stanford pretrained files ( specify the dimension ) or by constructing our own glove using the glove solution file
@@ -44,8 +54,7 @@ Download glove.twitter.27B.zip from https://nlp.stanford.edu/projects/glove/?fbc
 Download the train and test data from https://www.crowdai.org/challenges/epfl-ml-text-classification/dataset_files and extract them in 'train_test_data' folder
 run the script run.py
 
-Preprocess:
-
+**Preprocess**
 Several preprocessing techniques were used, majority of them were helpful and improved the score, but some were not.
 Some of the most influental techniques used were:
 -Emphisizing with external dictionnaries
