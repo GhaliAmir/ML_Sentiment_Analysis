@@ -49,19 +49,19 @@ Deep_Learning_Models : This folder contains our best deep learning model
 
 dictionnaries : This folder contains dictionnaries for slang translation and spelling correction downloaded from internet
 
-** http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz (dict1)
+http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz (dict1)
 
-** http://luululu.com/tweet/typo-corpus-r1.txt (dict2)
-
-embeddings: This folder contains 2 sub-folders:
-
-->my_embedding 
-
-->pretrained_embeddings: contains the pickle file of the glove embeddings downloaded from Stanford with 200 dimension only 
+http://luululu.com/tweet/typo-corpus-r1.txt (dict2)
 
 pos_neg_words: This folder contains two text files for positive-words and negative words (downloeaded from the internet)
 
 submission:  contains the submitted csv
+
+embeddings: This folder contains 2 sub-folders:
+
++ my_embedding 
+
++ pretrained_embeddings: contains the pickle file of the glove embeddings downloaded from Stanford with 200 dimension only 
 
 ### Code and notebooks
 
@@ -85,15 +85,15 @@ Several preprocessing techniques were used, majority of them were helpful and im
 
 Some of the most influental techniques used were:
 
--Emphisizing with external dictionnaries
++ Emphisizing with external dictionnaries
 
--Removing Punctuation and noisy words/characters
++ Removing Punctuation and noisy words/characters
 
--Correct spelling and map words to actual "real" ones via multiple methods and dicts..
++ Correct spelling and map words to actual "real" ones via multiple methods and dicts..
 
--Lemmatizing/Stemming
++ Lemmatizing/Stemming
 
--Deal with apostrophes/ hashtags..etc
++ Deal with apostrophes/ hashtags..etc
 
 
 ### Train & Predictions:
