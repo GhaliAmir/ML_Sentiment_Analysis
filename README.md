@@ -38,24 +38,41 @@ ktrain ( for bert model )
 math
 
 ### Folders
-BertModel: This folder contains our already trained bert model .
+
+BertModel: This folder contains our already trained bert model.
+
 cleaned_datasets : This folder contains the pickle files of the cleaned training and test datasets
+
 datasets : This folder contains the text files containing the tweets
+
 Deep_Learning_Models : This folder contains our best deep learning model 
-dictionnaries : This folder contains dictionnaries for slang translation and spelling correction downloaded from internet 
+
+dictionnaries : This folder contains dictionnaries for slang translation and spelling correction downloaded from internet
+
 ** http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz (dict1)
+
 ** http://luululu.com/tweet/typo-corpus-r1.txt (dict2)
-embeddings : This folder contains 2 sub-folders :
+
+embeddings: This folder contains 2 sub-folders:
+
 ->my_embedding 
-->pretrained_embeddings : contains the pickle file of the glove embeddings downloaded from Stanford with 200 dimension only 
-pos_neg_words : This folder contains two text files for positive-words and negative words ( downloeaded from the internet )
-submission :  contains our submitted csv , the best ones are outside this folder 
+
+->pretrained_embeddings: contains the pickle file of the glove embeddings downloaded from Stanford with 200 dimension only 
+
+pos_neg_words: This folder contains two text files for positive-words and negative words (downloeaded from the internet)
+
+submission:  contains the submitted csv
 
 ### Code and notebooks
+
 helper.py: This script contains methods to read , process the data , create dictionnaries and create the submissions csv
+
 paths.py: It contains only the paths used in our code used almost everywhere 
+
 create_emebedding.py: It creates a word embedding using either stanford pretrained files ( specify the dimension ) or by constructing our own glove using the glove solution file
+
 tweet_vectors.py : It created the embedding of the tweets and their sequences for deeplearning 
+
 run.py : Script to create the csv for our best model by calling run_dl_model()
 
 
@@ -65,15 +82,22 @@ run the script run.py
 
 ### Preprocess
 Several preprocessing techniques were used, majority of them were helpful and improved the score, but some were not.
+
 Some of the most influental techniques used were:
+
 -Emphisizing with external dictionnaries
+
 -Removing Punctuation and noisy words/characters
+
 -Correct spelling and map words to actual "real" ones via multiple methods and dicts..
+
 -Lemmatizing/Stemming
+
 -Deal with apostrophes/ hashtags..etc
 
 
 ### Train & Predictions:
+
 We used as word embeddings both the Glove Stanford pretrained ones(gave us better results because of the huge dataset they learned from) 
 and our own created ones. We then did the fit and predictions using supervised techniques (logistic regression, SVM..) 
 and in a second time deep learning techniques (CNN, RNN, BERT..) which gave far better results.
